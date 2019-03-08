@@ -13,6 +13,17 @@ Kyle Simpson | Pluralsight.com
 
 
 ### Course Agenda
+- Functional-Light Programming is totally made up and refers to getting the basics of functional programming
+- Course will cover...
+  - Pure Functions VS Impure
+  - Composition
+  - Immutability
+  - Closure
+  - Recursion
+  - List Transformation (Map)
+  - List Exclusion (Filter)
+  - List Composition (Reduce)
+  - List Iteration (forEach)
 
 ### Side Effects
 
