@@ -57,10 +57,13 @@ function bar(x, y, z) {
 ```
 
 ### Exercise 1
+- Refer to `exercises/exercise_1.js`
 
 ### Exercise 1 Solution, P I
+- Refer to `exercises/exercise_1.js`
 
 ### Exercise 1 Solution, P II
+- At this point in the course, he was answering questions. Nothing note-worthy here.
 
 
 ----
