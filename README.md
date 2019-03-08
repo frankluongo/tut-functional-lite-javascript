@@ -29,7 +29,8 @@ Kyle Simpson | Pluralsight.com
 - A function that produces a side effect is not a pure function
 - A Side Effect is when a function is meant to do one thing, but it impacts somewhere else
 
-Example:
+Example:<br>
+This function is impure because `foo` changes y and z, which are variables outside the scope of the function. If you call `foo` again, it will change the value of y and z, again.
 ```javascript
 function foo (x) {
   y = x * 2;
@@ -40,9 +41,9 @@ foo(5);
 y; // 10
 z; //15
 ```
-This function is impure because `foo` changes y and z, which are variables outside the scope of the function. If you call `foo` again, it will change the value of y and z, again.
 
-Example:
+Example:<br>
+This function is pure because every time you pass it the same values, you will get the same output.
 ```javascript
 function bar(x, y, z) {
   foo(x);
@@ -54,7 +55,6 @@ function bar(x, y, z) {
   }
 }
 ```
-This function is pure because every time you pass it the same values, you will get the same output.
 
 ### Exercise 1
 
