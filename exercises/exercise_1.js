@@ -25,3 +25,19 @@ function bar (x) {
     z = x * y;
   }
 }
+
+// Course Solution
+
+function bar (x, y) {
+  var z;
+  foo(x);
+  // * only return things that have changed
+  return [y, z];
+
+  function foo (x) {
+    y++;
+    z = x * y;
+  }
+}
+
+bar(20, 5);
