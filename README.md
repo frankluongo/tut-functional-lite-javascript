@@ -72,12 +72,108 @@ function bar(x, y, z) {
 ## Section 2: Composition & Immutability
 
 ### Manual Composition
+- Taking the output of one function and using it as part of the input for another function
+Ex.)
+```javascript
+function sum(x,y) {
+  return x + y;
+}
+
+function mult(x, y) {
+  return x * y;
+}
+
+sum ( mult(3,4), 5 );
+```
+
+**Manually Composed:**
+```javascript
+function sum(x,y) {
+  return x + y;
+}
+
+function mult(x, y) {
+  return x * y;
+}
+
+function multAndSum(x,y,z) {
+  return sum( mult(x, y), z)
+}
+
+multAndSum(3,4,5);
+```
 
 ### Composition Utility
+- We can build a simple utility to make this type of thing easier
+```javascript
+function sum(x,y) {
+  return x + y;
+}
+
+function mult(x, y) {
+  return x * y;
+}
+
+function compose2(fn1, fn2) {
+  return function comp() {
+    var args = [].slice.call(arguments);
+    return fn2(
+      fn1(args.shift(), args.shift()), args.shift()
+    );
+  }
+}
+var multAndSum = compose2(mult, sum);
+multAndSum(3,4,5);
+```
 
 ### Immutability
+- The inability to mutate or change something
+- `const` provides us with an immutable binding/assignment, not an immutable valuable
+```javascript
+var x = 2;
+x++; // Yes
+
+const y = 3;
+y++; // No
+
+const z = [4,5,6];
+z = 10; // No
+z[0] = 10 // Yes
+
+const w = Object.freeze([4,5,6]);
+w = 10; // Nope
+w[0] = 10; // Nope
+```
 
 ### Questions on Immutability
+- This will change the array passed into it:
+```javascript
+function doubleThemMutable(list) {
+  for (var i=0; i < list.length; i++) {
+    list[i] = list[i] * 2;
+  }
+}
+
+var arr = [3,4,5];
+doubleThemMutable(arr);
+arr;
+```
+
+- This will not:
+```javascript
+function doubleThemImmutable(list) {
+  var newList = []
+  for (var i=0; i < list.length; i++) {
+    newList[i] = list[i] * 2;
+  }
+  return newList;
+}
+
+var arr = [3,4,5];
+var arr2 = doubleThemImmutable(arr)
+arr;
+arr2;
+```
 
 ----
 
