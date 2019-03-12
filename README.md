@@ -153,6 +153,7 @@ w[0] = 10; // Nope
 
 ### Questions on Immutability
 This will change the array passed into it:
+
 **Example:**
 ```javascript
 function doubleThemMutable(list) {
