@@ -298,23 +298,125 @@ Refer to `exercises/exercise_3.js` for this
 ## Section 4: List Operations
 
 ### List Transformation
+List is also referred to as a *map* and a transformation is taking one value, doing something to it so you output a different value
+
+**Example:**
+```javascript
+function doubleIt(v) { return v * 2}
+
+function transform(arr, fn) {
+  var list = [];
+  for (var i = 0; i < arr.length; i++) {
+    list[i] = fn(arr[i]);
+  }
+  return list;
+}
+
+transform([1,2,3,4,5], doubleIt);
+```
+
+**ES6 Example:**
+
+This example is not functional because it's not composed.
+```javascript
+function doubleIt(v) { return v * 2}
+
+[1,2,3,4,5].map(doubleIt);
+```
 
 ### List Exclusion
+This can also be referred to as a *filter*
+
+**Example:**
+
+```javascript
+function isOdd(v) {return v % 2 == 1;}
+
+function exclude(arr, fn) {
+  var list = [];
+
+  for (var i = 0; i < arr.length; i++) {
+    if (fn(arr[i])) {
+      list.push(arr[i]);
+    }
+  }
+  return list;
+}
+
+exclude([1,2,3,4,5], isOdd);
+```
+
+**ES6 Example:**
+```javascript
+function isOdd(v) {return v % 2 == 1;}
+
+[1,2,3,4,5].filter(isOdd);
+```
 
 ### List Composition
+Another term for this is *reduce* and it's when we pull all the values from a list into one.
+
+
+**Example:**
+```javascript
+function mult(x,y) {return x * y}
+
+function compose(arr, fn, initial) {
+  var total = initial;
+
+  for (var i = 0; i < arr.length; i++) {
+    total = fn(total, arr[i]);
+  }
+
+  return total;
+}
+
+compose([1,2,3,4,5], mult, 1); // 120
+```
+
+**ES6 Example:**
+```javascript
+function mult(x,y) {return x * y}
+
+[1,2,3,4,5].reduce(mult, 1)
+```
 
 ### List Iteration
+This can be used as *forEach* and it's changing each value of a list. These are not great because they have side effects
+
+```javascript
+function logValue(v) { console.log(v) }
+
+function iterate(arr, fn) {
+  for (var i = 0;i < arr.length; i++) {
+    fn(arr[i])
+  }
+}
+
+iterate([1,2,3,4,5], logValue);
+```
+
+**ES6 Example:**
+```javascript
+[1,2,3,4,5].forEach(logValue)
+```
 
 ### Exercise 4
+Refer to `exercises/exercise_4.js` for this
 
 ### Exercise 4 Solution, P I
+Refer to `exercises/exercise_4.js` for this
 
 ### Exercise 4 Solution, P II
+Refer to `exercises/exercise_4.js` for this
 
 ### Exercise 4 Solution, P III
+Refer to `exercises/exercise_4.js` for this
 
 ### Exercise 4 Solution, P IV
+Refer to `exercises/exercise_4.js` for this
 
 ### Exercise 4 Solution, P V
+Refer to `exercises/exercise_4.js` for this
 
 ### Wrap Up
