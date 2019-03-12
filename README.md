@@ -4,17 +4,18 @@ Kyle Simpson | Pluralsight.com
 ## Section 1: Pure Functions
 
 ### Course Introduction
-- Kyle Simpson | @getify / getify.me
-  - Created
-    - lab.js
-    - grips
-    - asynquence
-  - Works for Maker Square
+Kyle Simpson | @getify / getify.me
+- Created
+  - lab.js
+  - grips
+  - asynquence
+- Works for Maker Square
 
 
 ### Course Agenda
-- Functional-Light Programming is totally made up and refers to getting the basics of functional programming
-- Course will cover...
+Functional-Light Programming is totally made up and refers to getting the basics of functional programming
+
+Course will cover...
   - Pure Functions VS Impure
   - Composition
   - Immutability
@@ -29,7 +30,7 @@ Kyle Simpson | Pluralsight.com
 - A function that produces a side effect is not a pure function
 - A Side Effect is when a function is meant to do one thing, but it impacts somewhere else
 
-Example:<br>
+**Example:**
 This function is impure because `foo` changes y and z, which are variables outside the scope of the function. If you call `foo` again, it will change the value of y and z, again.
 ```javascript
 function foo (x) {
@@ -42,7 +43,7 @@ y; // 10
 z; //15
 ```
 
-Example:<br>
+**Example:**
 This function is pure because every time you pass it the same values, you will get the same output.
 ```javascript
 function bar(x, y, z) {
@@ -63,7 +64,7 @@ function bar(x, y, z) {
 - Refer to `exercises/exercise_1.js`
 
 ### Exercise 1 Solution, P II
-- At this point in the course, he was answering questions. Nothing note-worthy here.
+At this point in the course, he was answering questions. Nothing note-worthy here.
 
 
 ----
@@ -72,8 +73,9 @@ function bar(x, y, z) {
 ## Section 2: Composition & Immutability
 
 ### Manual Composition
-- Taking the output of one function and using it as part of the input for another function
-Ex.)
+Taking the output of one function and using it as part of the input for another function
+
+**Example:**
 ```javascript
 function sum(x,y) {
   return x + y;
@@ -86,7 +88,7 @@ function mult(x, y) {
 sum ( mult(3,4), 5 );
 ```
 
-**Manually Composed:**
+**Manually Composed Example:**
 ```javascript
 function sum(x,y) {
   return x + y;
@@ -104,7 +106,9 @@ multAndSum(3,4,5);
 ```
 
 ### Composition Utility
-- We can build a simple utility to make this type of thing easier
+We can build a simple utility to make this type of thing easier
+
+**Example:**
 ```javascript
 function sum(x,y) {
   return x + y;
@@ -128,6 +132,8 @@ multAndSum(3,4,5);
 
 ### Immutability
 The inability to mutate or change something
+
+**Example:**
 - `const` provides us with an immutable binding/assignment, not an immutable valuable
 ```javascript
 var x = 2;
@@ -146,7 +152,8 @@ w[0] = 10; // Nope
 ```
 
 ### Questions on Immutability
-- This will change the array passed into it:
+This will change the array passed into it:
+**Example:**
 ```javascript
 function doubleThemMutable(list) {
   for (var i=0; i < list.length; i++) {
@@ -159,7 +166,8 @@ doubleThemMutable(arr);
 arr;
 ```
 
-- This will not:
+This will not:
+**Example:**
 ```javascript
 function doubleThemImmutable(list) {
   var newList = []
@@ -183,8 +191,8 @@ arr2;
 ### Closure
 Closure is when a function "remembers" the variables around it even when that function is executed elsewhere
 
-- Example:
-  - The variable count is *enclosed* in the function foo. It remembers the count variable every time the function is run
+**Example:**
+- The variable count is *enclosed* in the function foo. It remembers the count variable every time the function is run
 ```javascript
 function foo () {
   var count = 0;
@@ -201,8 +209,8 @@ x(); // 1
 x(); // 2
 ```
 
-- A better example:
-  - Here, we're closing over *x*. X will never change though because when we define it, we pass in 10
+**Example:**
+- Here, we're closing over *x*. X will never change though because when we define it, we pass in 10
 ```javascript
 function sumX (x) {
   return function (y) {
@@ -229,7 +237,7 @@ A function that will call itself repeatedly until it satisfies a certain require
 
 
 ### Recursive Example
-- Iterative implementation
+Iterative implementation
 ```javascript
 function sumIter() {
   var sum = 0;
@@ -242,7 +250,7 @@ function sumIter() {
 sumIter(3,4,5); // 12
 ```
 
-- Recursive Implementation
+Recursive Implementation
 ```javascript
 function sumRecur() {
   var args = [].slice.call(arguments);
@@ -258,8 +266,8 @@ function sumRecur() {
 sumRecur(3,4,5); // 12
 ```
 
-- Recursive Implementation with ES6
-  - We use the spread parameter to turn the arguments into an array
+Recursive Implementation with ES6
+- We use the spread parameter to turn the arguments into an array
 ```javascript
 function sumRecur(...args) {
   if (args.length <= 2) {
