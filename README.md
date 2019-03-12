@@ -168,6 +168,7 @@ arr;
 ```
 
 This will not:
+
 **Example:**
 ```javascript
 function doubleThemImmutable(list) {
