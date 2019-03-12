@@ -127,7 +127,7 @@ multAndSum(3,4,5);
 ```
 
 ### Immutability
-- The inability to mutate or change something
+The inability to mutate or change something
 - `const` provides us with an immutable binding/assignment, not an immutable valuable
 ```javascript
 var x = 2;
@@ -181,18 +181,105 @@ arr2;
 ## Section 3: Closure & Recursion
 
 ### Closure
+Closure is when a function "remembers" the variables around it even when that function is executed elsewhere
+
+- Example:
+  - The variable count is *enclosed* in the function foo. It remembers the count variable every time the function is run
+```javascript
+function foo () {
+  var count = 0;
+
+  return function () {
+    return count++;
+  }
+}
+
+var x = foo();
+
+x(); // 0
+x(); // 1
+x(); // 2
+```
+
+- A better example:
+  - Here, we're closing over *x*. X will never change though because when we define it, we pass in 10
+```javascript
+function sumX (x) {
+  return function (y) {
+    return x + y;
+  }
+}
+
+var add10 = sumX(10);
+
+add10(3); // 13
+add10(14) // 24
+```
 
 ### Exercise 2
+Refer to `exercises/exercise_2.js` for this
+
 
 ### Exercise 2 Solution
+Refer to `exercises/exercise_2.js` for this
+
 
 ### Recursion
+A function that will call itself repeatedly until it satisfies a certain requirement. There is also mutual recursion that involves multiple functions
+
 
 ### Recursive Example
+- Iterative implementation
+```javascript
+function sumIter() {
+  var sum = 0;
+  for (var i=0; i < arguments.length; i++) {
+    sum = sum + arguments[i];
+  }
+  return sum;
+}
+
+sumIter(3,4,5); // 12
+```
+
+- Recursive Implementation
+```javascript
+function sumRecur() {
+  var args = [].slice.call(arguments);
+  // Base case that satisfies the requirement
+  if (args.length <= 2) {
+    return args[0] + args[1];
+  }
+  return (
+    args[0] + sumRecur.apply(null, args.slice(1));
+  )
+}
+
+sumRecur(3,4,5); // 12
+```
+
+- Recursive Implementation with ES6
+  - We use the spread parameter to turn the arguments into an array
+```javascript
+function sumRecur(...args) {
+  if (args.length <= 2) {
+    return args[0] + args[1];
+  }
+  return (
+    args[0] + sumRecur(...args.slice(1))
+  )
+}
+
+sumRecur(3,4,5); // 12
+```
+
 
 ### Exercise 3
+Refer to `exercises/exercise_3.js` for this
+
 
 ### Exercise 3 Solution
+Refer to `exercises/exercise_3.js` for this
 
 
 ----
